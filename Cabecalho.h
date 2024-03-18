@@ -1,7 +1,6 @@
 #ifndef CABECALHO_H
 #define CABECALHO_H
 
-// Inclusões de bibliotecas
 #include <stdio.h>
 #include <stdlib.h>
 

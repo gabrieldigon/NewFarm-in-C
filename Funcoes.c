@@ -1,5 +1,5 @@
 #include "Cabecalho.h"
-
+// funcoes de incialização da pilha
 void inicializarPilha(Pilha* pilha) {
     pilha->topo = NULL;
 }
@@ -9,6 +9,7 @@ void inicializarFila(Fila* fila) {
     fila->tras = NULL;
 }
 
+//funcoes basicas para montar as TADS
 void empilhar(Pilha* pilha, int peso) {
     No* novoNo = (No*)malloc(sizeof(No));
     if (novoNo == NULL) {
@@ -62,7 +63,7 @@ int desenfileirar(Fila* fila) {
     free(temp);
     return peso;
 }
-
+// Essa func imprime a matriz com o peso de todas as cabeças de gado da fazenda, ela e populada pela pilha na funcao salvarVenda
 void imprimeMatriz(int** matriz, int linhas, int colunas) {
     printf("\nCabecas de gado da fazenda:\n");
     for (int i = 0; i < linhas; i++) {
@@ -74,7 +75,7 @@ void imprimeMatriz(int** matriz, int linhas, int colunas) {
         printf("\n");
     }
 }
-
+//soma o peso de todas as cabeças de gado da fazenda
 void somaMatriz(int** matriz, int linhas, int colunas) {
     printf("Soma dos pesos das cabecas de gado da fazenda:\n");
     float soma = 0;
@@ -90,7 +91,7 @@ void somaMatriz(int** matriz, int linhas, int colunas) {
     float calculoTotal = (soma / 30) * 207;
     printf("%.2f\n", calculoTotal);
 }
-
+// essa função talvez seja a mais importante, pega os elementos que o usuario digita ao fazer uma venda e salva em uma pilha e em uma fila, depois usa a pilha pra popular a matriz, ja a fila fica responsavel por levar os dados ate a main para serem impressos e gerarem um status de venda
 void salvaVenda(Pilha* pilha, Fila* fila, int** matriz, int* linhaAtual) {
     int peso;
     while (1) {
@@ -106,7 +107,7 @@ void salvaVenda(Pilha* pilha, Fila* fila, int** matriz, int* linhaAtual) {
     }
     (*linhaAtual)++;
 }
-
+//imprime os elementos de uma fila
 void imprimirFila(Fila* fila) {
     printf("\nElementos na fila:\n");
     No* atual = fila->frente;
@@ -115,7 +116,7 @@ void imprimirFila(Fila* fila) {
         atual = atual->proximo;
     }
 }
-
+// soma os elementos de uma fila
 int somaElementosFila(Fila* fila) {
     int soma = 0;
     No* atual = fila->frente;
@@ -125,7 +126,7 @@ int somaElementosFila(Fila* fila) {
     }
     return soma;
 }
-
+// faz a media de elementos de uma fila
 float mediaElementosFila(Fila* fila) {
     int soma = 0;
     int contador = 0;
